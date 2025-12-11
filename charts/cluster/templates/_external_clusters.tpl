@@ -2,19 +2,23 @@
 {{- if eq .Values.mode "standalone" }}
 externalClusters: []
 {{- else if eq .Values.mode "recovery" }}
-externalClusters:
   {{- if eq .Values.recovery.method "pg_basebackup" }}
+externalClusters:
   - name: pgBaseBackupSource
      {{- include "cluster.externalSourceCluster" .Values.recovery.pgBaseBackup.source | nindent 4 }}
   {{- else if eq .Values.recovery.method "import" }}
+externalClusters:
   - name: importSource
      {{- include "cluster.externalSourceCluster" .Values.recovery.import.source | nindent 4 }}
   {{- else if eq .Values.recovery.method "object_store" }}
+externalClusters:
   - name: objectStoreRecoveryCluster
     barmanObjectStore:
       serverName: {{ .Values.recovery.clusterName }}
       {{- $d := dict "chartFullname" (include "cluster.fullname" .) "scope" .Values.recovery "secretPrefix" "recovery" -}}
       {{- include "cluster.barmanObjectStoreConfig" $d | nindent 4 }}
+  {{- else }}
+externalClusters: []
   {{- end }}
 {{- else if eq .Values.mode "replica" }}
 externalClusters:
