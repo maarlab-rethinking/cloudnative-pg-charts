@@ -561,8 +561,7 @@ replica:
         key: ""
       passwordSecret:
         name: ""
-        key: ""
-
+    key: ""
 ##
 # Database management configuration
 databases: []
