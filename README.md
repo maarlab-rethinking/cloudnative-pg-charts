@@ -17,7 +17,7 @@ running in private, public, or hybrid cloud environments.
 
 **NOTE**: supports only the latest point release of the CloudNativePG operator.
 ```console
-helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo add cnpg https://maarlab-rethinking.github.pg/cloudnative-pg-charts
 helm upgrade --install cnpg \
   --namespace cnpg-system \
   --create-namespace \
@@ -55,7 +55,7 @@ Refer to the [Operator Chart documentation](charts/cloudnative-pg/README.md) for
 Helm chart to install a CloudNativePG database cluster.
 
 ```console
-helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo add cnpg https://maarlab-rethinking.github.pg/cloudnative-pg-charts
 helm upgrade --install database \
   --namespace database \
   --create-namespace \
