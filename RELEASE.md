@@ -3,7 +3,7 @@ Release Process
 
 This repo contains two helm charts: [cloudnative-pg](./charts/cloudnative-pg)
 and [cluster](./charts/cluster). Both the charts are available
-through a single [repository](https://cloudnative-pg.github.io/charts), but
+through a single [repository](https://maarlab-rethinking.github.pg/cloudnative-pg-charts), but
 should be released separately as their versioning might be unlinked, and the
 latter depends on the former.
 
@@ -101,7 +101,7 @@ In order to create a new release of the `cloudnative-pg` chart, follow these ste
     action. Verify they both are successful.
 14. Once done you should be able to run:
     ```bash
-    helm repo add cnpg https://cloudnative-pg.github.io/charts
+    helm repo add cnpg https://maarlab-rethinking.github.pg/cloudnative-pg-charts
     helm repo update
     helm search repo cnpg
     ```
@@ -152,7 +152,7 @@ In order to create a new release of the `cluster` chart, follow these steps:
     Verify they both are successful.
 13. Once done you should be able to run:
     ```bash
-    helm repo add cnpg https://cloudnative-pg.github.io/charts
+    helm repo add cnpg https://maarlab-rethinking.github.pg/cloudnative-pg-charts
     helm repo update
     helm search repo cnpg
     ```
@@ -240,7 +240,7 @@ In order to create a new release of the `plugin-barman-cloud` chart, follow thes
     action. Verify they both are successful.
 14. Once done you should be able to run:
     ```bash
-    helm repo add cnpg https://cloudnative-pg.github.io/charts
+    helm repo add cnpg https://maarlab-rethinking.github.pg/cloudnative-pg-charts
     helm repo update
     helm search repo cnpg
     ```
