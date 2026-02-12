@@ -347,6 +347,7 @@ cluster:
     #  - name: custom-queries-secret
     #    key: custom-queries
 
+  # -- The plugins configuration, containing any plugin to be loaded with the corresponding configuration
   plugins: []
     # - name: cnpg-i-plugin-example.my-org.io
     #   enabled: true
@@ -576,7 +577,7 @@ replica:
         key: ""
       passwordSecret:
         name: ""
-    key: ""
+        key: ""
 ##
 # Database management configuration
 databases: []
