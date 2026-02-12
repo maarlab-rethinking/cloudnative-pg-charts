@@ -14,7 +14,7 @@ To begin, make sure you install the CNPG operator in you cluster. It can be inst
 ir can be installed via a Kubernetes manifest. For more information see the [CNPG documentation](https://cloudnative-pg.io/documentation/current/installation_upgrade/).
 
 ```console
-helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo add cnpg https://maarlab-rethinking.github.pg/cloudnative-pg-charts
 helm upgrade --install cnpg \
   --namespace cnpg-system \
   --create-namespace \

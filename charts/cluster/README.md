@@ -33,7 +33,7 @@ Getting Started
 Skip this step if the CNPG operator is already installed in your cluster.
 
 ```console
-helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo add cnpg https://maarlab-rethinking.github.pg/cloudnative-pg-charts
 helm upgrade --install cnpg \
 --namespace cnpg-system \
 --create-namespace \
@@ -43,7 +43,7 @@ cnpg/cloudnative-pg
 ### Setting up a CNPG Cluster
 
 ```console
-helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo add cnpg https://maarlab-rethinking.github.pg/cloudnative-pg-charts
 helm upgrade --install cnpg \
 --namespace cnpg-database \
 --create-namespace \
