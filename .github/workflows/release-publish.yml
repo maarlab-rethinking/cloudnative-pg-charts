@@ -46,7 +46,8 @@ jobs:
         uses: helm/chart-releaser-action@cae68fefc6b5f367a0275617c9f83181ba54714f # v1.7.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          CR_KEY: helm-charts+no-reply@cloudnative-pg.io
+          # Fork-specific: use maarlab PGP key identity for chart signing
+          CR_KEY: engineering@maarlab.com
           CR_KEYRING: /tmp/keyring.gpg
           CR_PASSPHRASE_FILE: /tmp/passphrase-file.txt
           CR_SIGN: true
