@@ -15,7 +15,8 @@
         'appVersion: "(?<currentValue>.*?)"',
       ],
       datasourceTemplate: 'docker',
-      depNameTemplate: 'ghcr.io/cloudnative-pg/cloudnative-pg',
+      // Fork-specific: track maarlab-rethinking operator image
+      depNameTemplate: 'ghcr.io/maarlab-rethinking/cloudnative-pg',
       versioningTemplate: 'loose',
     },
   ],

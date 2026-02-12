@@ -23,7 +23,8 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/cloudnative-pg/cloudnative-pg
+  # Fork-specific: use maarlab-rethinking operator image
+  repository: ghcr.io/maarlab-rethinking/cloudnative-pg
   pullPolicy: IfNotPresent
   # -- Overrides the image tag whose default is the chart appVersion.
   tag: ""
