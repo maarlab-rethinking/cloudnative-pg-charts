@@ -1,7 +1,6 @@
 {{- define "cluster.externalClusters" -}}
+{{- if eq .Values.mode "recovery" }}
 externalClusters:
-{{- if eq .Values.mode "standalone" }} []
-{{- else if eq .Values.mode "recovery" }}
   {{- if eq .Values.recovery.method "pg_basebackup" }}
   - name: pgBaseBackupSource
      {{- include "cluster.externalSourceCluster" .Values.recovery.pgBaseBackup.source | nindent 4 }}
@@ -20,12 +19,12 @@ externalClusters:
     plugin:
       name: barman-cloud.cloudnative-pg.io
       parameters:
-        barmanObjectName: {{ include "cluster.fullname" $  }}-object-store
-        serverName: {{ .Values.recovery.clusterName |  default (include "cluster.fullname" .) }}
+        barmanObjectName: {{ include "cluster.fullname" $ }}-object-store
+        serverName: {{ .Values.recovery.clusterName | default (include "cluster.fullname" .) }}
     {{- end }}
-  {{- else }} []
   {{- end }}
 {{- else if eq .Values.mode "replica" }}
+externalClusters:
   - name: originCluster
   {{- if not (empty .Values.replica.origin.objectStore.provider) }}
     barmanObjectStore:
@@ -36,7 +35,7 @@ externalClusters:
   {{- if not (empty .Values.replica.origin.pg_basebackup.host) }}
     {{- include "cluster.externalSourceCluster" .Values.replica.origin.pg_basebackup | nindent 4 }}
   {{- end }}
-{{- else }}
+{{- else if not (eq .Values.mode "standalone") }}
   {{ fail "Invalid cluster mode!" }}
 {{- end }}
-{{ end }}
+{{- end }}
