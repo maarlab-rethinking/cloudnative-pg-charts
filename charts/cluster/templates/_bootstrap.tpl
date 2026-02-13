@@ -123,26 +123,6 @@ bootstrap:
     {{ fail "Invalid replica bootstrap mode!" }}
   {{- end }}
 {{- else }}
-
-externalClusters:
-  - name: objectStoreRecoveryCluster
-    barmanObjectStore:
-      serverName: {{ .Values.recovery.clusterName }}
-      {{- $d := dict "chartFullname" (include "cluster.fullname" .) "scope" .Values.recovery "secretPrefix" "recovery" -}}
-      {{- include "cluster.barmanObjectStoreConfig" $d | indent 4 }}
-    {{- else if and (eq .Values.recovery.method "object_store") (eq (include "cluster.useBarmanCloudPlugin" .) "true") }}
-    source: origin
-
-externalClusters:
-    - name: origin
-      plugin:
-        name: barman-cloud.cloudnative-pg.io
-        parameters:
-          barmanObjectName: {{ include "cluster.fullname" $  }}-object-store
-          serverName: {{ .Values.recovery.clusterName |  default (include "cluster.fullname" .) }}
-{{- end }}
-{{- end }}
-{{-  else }}
   {{ fail "Invalid cluster mode!" }}
 {{- end }}
 {{- if eq .Values.mode "replica" }}
