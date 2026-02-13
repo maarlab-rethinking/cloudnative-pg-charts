@@ -12,7 +12,7 @@ externalClusters:
     {{- if eq (include "cluster.useBarmanCloudPlugin" .) "false" }}
   - name: objectStoreRecoveryCluster
     barmanObjectStore:
-      serverName: {{ .Values.recovery.clusterName }}
+      serverName: {{ .Values.recovery.clusterName | default (include "cluster.fullname" .) }}
       {{- $d := dict "chartFullname" (include "cluster.fullname" .) "scope" .Values.recovery "secretPrefix" "recovery" -}}
       {{- include "cluster.barmanObjectStoreConfig" $d | nindent 4 }}
     {{- else }}
