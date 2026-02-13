@@ -77,19 +77,17 @@ bootstrap:
     recoveryTarget:
       targetTime: {{ . }}
     {{- end }}
-    {{- with .Values.recovery.database }}
+    {{ with .Values.recovery.database }}
     database: {{ . }}
     {{- end }}
-    {{- with .Values.recovery.owner }}
+    {{ with .Values.recovery.owner }}
     owner: {{ . }}
     {{- end }}
     {{- if eq .Values.recovery.method "backup" }}
     backup:
       name: {{ .Values.recovery.backupName }}
-    {{- else if and (eq .Values.recovery.method "object_store") (eq (include "cluster.useBarmanCloudPlugin" .) "false") }}
+    {{- else if eq .Values.recovery.method "object_store" }}
     source: objectStoreRecoveryCluster
-    {{- else }}
-    source: origin
     {{- end }}
   {{- end }}
 {{- else if eq .Values.mode "replica" }}
