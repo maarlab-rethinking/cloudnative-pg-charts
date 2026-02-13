@@ -82,9 +82,7 @@ jobs:
               break
             fi
             helm push "${pkg}" oci://ghcr.io/"${GITHUB_REPOSITORY}"
-            file=${pkg##*/}
-            name=${file%-*}
-            version=${file%.*}
-            version=${version##*-}
+            name=$(helm show chart "${pkg}" | awk '$0 ~ /^name:/ {print $2}')
+            version=$(helm show chart "${pkg}" | awk '$0 ~ /^version:/ {print $2}')
             cosign sign --yes ghcr.io/"${GITHUB_REPOSITORY}"/"${name}":"${version}"
           done
