@@ -262,27 +262,6 @@
                         }
                     }
                 },
-                "plugins": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "enabled": {
-                                "type": "boolean"
-                            },
-                            "isWALArchiver": {
-                                "type": "boolean"
-                            },
-                            "parameters": {
-                                "type": "object"
-                            }
-                        },
-                        "required": ["name"]
-                    }
-                },
                 "postgresGID": {
                     "type": "integer"
                 },
