@@ -21,7 +21,7 @@ name: cluster
 description: Deploys and manages a CloudNativePG cluster and its associated resources.
 icon: https://raw.githubusercontent.com/cloudnative-pg/artwork/main/cloudnativepg-logo.svg
 type: application
-version: 0.5.0-maarlab1
+version: 0.5.0-maarlab2
 sources:
   - https://github.com/maarlab-rethinking/cloudnative-pg-charts
 keywords:
