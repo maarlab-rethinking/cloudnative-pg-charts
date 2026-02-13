@@ -1046,6 +1046,26 @@ entries:
     - https://github.com/cloudnative-pg/charts/releases/download/cluster-v0.5.0/cluster-0.5.0.tgz
     version: 0.5.0
   - apiVersion: v2
+    created: "2026-02-13T14:17:10.856935901Z"
+    description: Deploys and manages a CloudNativePG cluster and its associated resources.
+    digest: 30dd0b6fe46d3eb195bfefa721aabe64b8ca89a59737201b996d34ecf293e89c
+    home: https://cloudnative-pg.io
+    icon: https://raw.githubusercontent.com/cloudnative-pg/artwork/main/cloudnativepg-logo.svg
+    keywords:
+    - postgresql
+    - postgres
+    - database
+    maintainers:
+    - email: engineering@maarlab.com
+      name: maarlab-rethinking
+    name: cluster
+    sources:
+    - https://github.com/maarlab-rethinking/cloudnative-pg-charts
+    type: application
+    urls:
+    - https://github.com/maarlab-rethinking/cloudnative-pg-charts/releases/download/cluster-v0.5.0-maarlab1/cluster-0.5.0-maarlab1.tgz
+    version: 0.5.0-maarlab1
+  - apiVersion: v2
     created: "2025-12-04T19:43:22.058903095Z"
     description: Deploys and manages a CloudNativePG cluster and its associated resources.
     digest: 875c9f154302b8f5248e83b35e3abcbb2128f8b033d819ef31416c89b6e21027
@@ -1830,4 +1850,4 @@ entries:
     urls:
     - https://github.com/cloudnative-pg/charts/releases/download/plugin-barman-cloud-v0.1.0/plugin-barman-cloud-0.1.0.tgz
     version: 0.1.0
-generated: "2026-02-05T16:09:24.998756815Z"
+generated: "2026-02-13T14:17:11.057691188Z"
