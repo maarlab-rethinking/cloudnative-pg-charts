@@ -351,6 +351,9 @@
                 "superuserSecret": {
                     "type": "string"
                 },
+                "topologySpreadConstraints": {
+                    "type": "array"
+                },
                 "walStorage": {
                     "type": "object",
                     "properties": {
