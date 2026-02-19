@@ -1,6 +1,6 @@
 # cluster
 
-![Version: 0.5.0-maarlab2](https://img.shields.io/badge/Version-0.5.0--maarlab2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.5.0-maarlab3](https://img.shields.io/badge/Version-0.5.0--maarlab3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 > **Warning**
 > ### This chart is under active development.
