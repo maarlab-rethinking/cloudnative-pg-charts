@@ -74,12 +74,12 @@ spec:
             - node1
             - node2
   topologySpreadConstraints:
-    - maxSkew: 1
+    - labelSelector:
+        matchLabels:
+          cnpg.io/cluster: non-default-configuration-cluster
+      maxSkew: 1
       topologyKey: topology.kubernetes.io/zone
       whenUnsatisfiable: DoNotSchedule
-      labelSelector:
-        matchLabels:
-          app: postgres
   env:
     - name: MY_CUSTOM_FLAG
       value: enabled
