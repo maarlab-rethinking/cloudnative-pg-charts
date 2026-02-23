@@ -9,7 +9,7 @@ environments.
 ## Deployment using the latest release
 
 ```console
-helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo add cnpg https://maarlab-rethinking.github.io/cloudnative-pg-charts
 helm upgrade --install cnpg \
   --namespace cnpg-system \
   --create-namespace \
@@ -59,7 +59,7 @@ provided Grafana dashboard.
 Deployment using the latest release:
 
 ```console
-helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo add cnpg https://maarlab-rethinking.github.io/cloudnative-pg-charts
 helm repo update
 helm upgrade --install cnpg-sandbox \
   cnpg/cnpg-sandbox
