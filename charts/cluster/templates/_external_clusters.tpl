@@ -1,5 +1,5 @@
 {{- define "cluster.externalClusters" -}}
-{{- if eq .Values.mode "recovery" }}
+{{- if and (eq .Values.mode "recovery") (ne .Values.recovery.method "backup") }}
 externalClusters:
   {{- if eq .Values.recovery.method "pg_basebackup" }}
   - name: pgBaseBackupSource
