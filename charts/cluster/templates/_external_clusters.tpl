@@ -35,7 +35,7 @@ externalClusters:
   {{- if not (empty .Values.replica.origin.pg_basebackup.host) }}
     {{- include "cluster.externalSourceCluster" .Values.replica.origin.pg_basebackup | nindent 4 }}
   {{- end }}
-{{- else if not (eq .Values.mode "standalone") }}
+{{- else if not (or (eq .Values.mode "standalone") (eq .Values.mode "recovery")) }}
   {{ fail "Invalid cluster mode!" }}
 {{- end }}
 {{- end }}
