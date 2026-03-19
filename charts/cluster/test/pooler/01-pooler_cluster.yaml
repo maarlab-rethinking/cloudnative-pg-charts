@@ -12,6 +12,14 @@ poolers:
     type: rw
     instances: 2
     poolMode: transaction
+    clientTLSSecret:
+      name: pgbouncer-client-tls
+    clientCASecret:
+      name: pgbouncer-client-ca
+    serverTLSSecret:
+      name: pgbouncer-server-tls
+    serverCASecret:
+      name: pgbouncer-server-ca
   - name: ro
     type: ro
     instances: 2

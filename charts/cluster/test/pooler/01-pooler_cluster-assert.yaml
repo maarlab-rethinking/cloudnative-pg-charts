@@ -21,6 +21,14 @@ spec:
     name: pooler-cluster
   instances: 2
   pgbouncer:
+    clientTLSSecret:
+      name: pgbouncer-client-tls
+    clientCASecret:
+      name: pgbouncer-client-ca
+    serverTLSSecret:
+      name: pgbouncer-server-tls
+    serverCASecret:
+      name: pgbouncer-server-ca
     poolMode: transaction
   type: rw
 ---

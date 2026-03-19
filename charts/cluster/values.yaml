@@ -638,6 +638,18 @@ poolers: []
   #   poolMode: transaction
   #   # -- Number of PgBouncer instances
   #   instances: 3
+  #   # -- TLS secret used by PgBouncer to accept client connections (contains tls.key/tls.crt).
+  #   clientTLSSecret:
+  #     name: pgbouncer-client-tls
+  #   # -- Root CA secret used by PgBouncer to validate client certificates.
+  #   clientCASecret:
+  #     name: pgbouncer-client-ca
+  #   # -- TLS secret used by PgBouncer when authenticating against PostgreSQL.
+  #   serverTLSSecret:
+  #     name: pgbouncer-server-tls
+  #   # -- Root CA secret used by PgBouncer to validate PostgreSQL certificates.
+  #   serverCASecret:
+  #     name: pgbouncer-server-ca
   #   # -- PgBouncer configuration parameters
   #   parameters:
   #     max_client_conn: "1000"
@@ -669,6 +681,18 @@ poolers: []
   #   poolMode: transaction
   #   # -- Number of PgBouncer instances
   #   instances: 3
+  #   # -- TLS secret used by PgBouncer to accept client connections (contains tls.key/tls.crt).
+  #   clientTLSSecret:
+  #     name: pgbouncer-client-tls
+  #   # -- Root CA secret used by PgBouncer to validate client certificates.
+  #   clientCASecret:
+  #     name: pgbouncer-client-ca
+  #   # -- TLS secret used by PgBouncer when authenticating against PostgreSQL.
+  #   serverTLSSecret:
+  #     name: pgbouncer-server-tls
+  #   # -- Root CA secret used by PgBouncer to validate PostgreSQL certificates.
+  #   serverCASecret:
+  #     name: pgbouncer-server-ca
   #   # -- PgBouncer configuration parameters
   #   parameters:
   #     max_client_conn: "1000"

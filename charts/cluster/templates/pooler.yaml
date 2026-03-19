@@ -12,6 +12,22 @@ spec:
   type: {{ default "rw" .type }}
   pgbouncer:
     poolMode: {{ default "session" .poolMode }}
+    {{- with .clientTLSSecret }}
+    clientTLSSecret:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .clientCASecret }}
+    clientCASecret:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .serverTLSSecret }}
+    serverTLSSecret:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with .serverCASecret }}
+    serverCASecret:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
     {{- with .authQuerySecret }}
     authQuerySecret:
       {{- toYaml . | nindent 6 }}
