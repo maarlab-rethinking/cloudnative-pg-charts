@@ -1,6 +1,6 @@
 # cluster
 
-![Version: 0.8.1](https://img.shields.io/badge/Version-0.8.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.8.1-maarlab.1](https://img.shields.io/badge/Version-0.8.1--maarlab.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 > **Warning**
 > ### This chart is under active development.
@@ -69,7 +69,7 @@ Getting Started
 Skip this step if the CNPG operator is already installed in your cluster.
 
 ```console
-helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo add cnpg https://maarlab-rethinking.github.io/cloudnative-pg-charts
 helm upgrade --install cnpg \
 --namespace cnpg-system \
 --create-namespace \
@@ -79,7 +79,7 @@ cnpg/cloudnative-pg
 ### Setting up a CNPG Cluster
 
 ```console
-helm repo add cnpg https://cloudnative-pg.github.io/charts
+helm repo add cnpg https://maarlab-rethinking.github.io/cloudnative-pg-charts
 helm upgrade --install cnpg \
 --namespace cnpg-database \
 --create-namespace \
@@ -246,6 +246,7 @@ Kubernetes: `>=1.29.0-0`
 | cluster.storage.size | string | `"8Gi"` |  |
 | cluster.storage.storageClass | string | `""` |  |
 | cluster.superuserSecret | string | `""` |  |
+| cluster.topologySpreadConstraints | list | `[]` | TopologySpreadConstraints specifies how to spread matching pods among the given topology. If labelSelector is not specified, it defaults to cnpg.io/cluster: <cluster-fullname>. More info: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/ |
 | cluster.walStorage.enabled | bool | `false` |  |
 | cluster.walStorage.size | string | `"1Gi"` |  |
 | cluster.walStorage.storageClass | string | `""` |  |
@@ -398,7 +399,7 @@ Kubernetes: `>=1.29.0-0`
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| itay-grudev | <itay+cloudnativepg-charts+github.com@grudev.com> |  |
+| maarlab-rethinking | <engineering@maarlab.com> |  |
 
 Features that require feedback
 ------------------------------
