@@ -90,6 +90,14 @@ spec:
             values:
             - node1
             - node2
+  topologySpreadConstraints:
+    - labelSelector:
+        matchLabels:
+          cnpg.io/cluster: non-default-configuration-cluster
+          cnpg.io/podRole: instance
+      maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: DoNotSchedule
   env:
     - name: MY_CUSTOM_FLAG
       value: enabled

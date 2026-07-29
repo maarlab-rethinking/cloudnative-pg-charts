@@ -43,6 +43,19 @@ spec:
   affinity:
     {{- toYaml . | nindent 4 }}
   {{- end }}
+  {{- with .Values.cluster.topologySpreadConstraints }}
+  {{- $clusterName := include "cluster.fullname" $ }}
+  {{- $constraints := list }}
+  {{- range . }}
+    {{- $constraint := deepCopy . }}
+    {{- if not $constraint.labelSelector }}
+      {{- $_ := set $constraint "labelSelector" (dict "matchLabels" (dict "cnpg.io/cluster" $clusterName "cnpg.io/podRole" "instance")) }}
+    {{- end }}
+    {{- $constraints = append $constraints $constraint }}
+  {{- end }}
+  topologySpreadConstraints:
+    {{- toYaml $constraints | nindent 4 }}
+  {{- end }}
   {{- with .Values.cluster.env }}
   env:
     {{- toYaml . | nindent 4 }}

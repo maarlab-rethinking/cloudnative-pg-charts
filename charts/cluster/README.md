@@ -258,6 +258,7 @@ Kubernetes: `>=1.29.0-0`
 | cluster.storage.storageClass | string | `""` |  |
 | cluster.superuserSecret | string | `""` |  |
 | cluster.switchoverDelay | int | `3600` | The time in seconds that is allowed for a primary instance to gracefully shut down during a switchover. Defaults to 3600 (1h) when unset, per the operator default. |
+| cluster.topologySpreadConstraints | list | `[]` | TopologySpreadConstraints specifies how to spread matching pods among the given topology. If labelSelector is not specified, it defaults to selecting this cluster's instance pods only (cnpg.io/cluster: <cluster-fullname>, cnpg.io/podRole: instance). The podRole is required: pooler (pgbouncer) pods carry the same cnpg.io/cluster label, so a selector without it would count them towards the skew. More info: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/ |
 | cluster.walStorage.enabled | bool | `false` |  |
 | cluster.walStorage.size | string | `"1Gi"` |  |
 | cluster.walStorage.storageClass | string | `""` |  |
