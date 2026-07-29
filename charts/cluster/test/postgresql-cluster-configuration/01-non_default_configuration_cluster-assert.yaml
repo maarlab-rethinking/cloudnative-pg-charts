@@ -12,6 +12,12 @@ spec:
   postgresUID: 1001
   postgresGID: 1002
   instances: 2
+  replicationSlots:
+    highAvailability:
+      enabled: true
+      slotPrefix: "_cnpg_"
+      synchronizeLogicalDecoding: true
+    updateInterval: 30
   postgresql:
     ldap:
       server: 'openldap.default.svc.cluster.local'
@@ -23,7 +29,9 @@ spec:
           key: 'data'
         searchAttribute: 'uid'
     parameters:
+      hot_standby_feedback: "on"
       max_connections: "42"
+      sync_replication_slots: "on"
     pg_hba:
       - host all 1.2.3.4/32 trust
     pg_ident:
@@ -109,12 +117,6 @@ spec:
     limits:
       cpu: 100m
       memory: 256Mi
-  plugins:
-    - name: cnpg-i-plugin-example.my-org.io
-      enabled: true
-      parameters:
-        key1: value1
-        key2: value2
   priorityClassName: mega-high
   primaryUpdateStrategy: supervised
   primaryUpdateMethod: restart
@@ -159,3 +161,11 @@ spec:
         - NET_BIND_SERVICE
     readOnlyRootFilesystem: true
     runAsNonRoot: true
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    foo: bar
+    cnpg.io/reload: "true"
+    cnpg.io/cluster: non-default-configuration-cluster

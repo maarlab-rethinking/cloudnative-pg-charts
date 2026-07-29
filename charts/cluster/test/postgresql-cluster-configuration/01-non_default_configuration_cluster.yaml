@@ -91,12 +91,12 @@ cluster:
        inRoles:
          - pg_monitor
          - pg_signal_backend
-  plugins:
-    - name: cnpg-i-plugin-example.my-org.io
+  replicationSlots:
+    highAvailability:
       enabled: true
-      parameters:
-        key1: value1
-        key2: value2
+      slotPrefix: "_cnpg_"
+      synchronizeLogicalDecoding: true
+    updateInterval: 30
   postgresql:
     ldap:
       server: 'openldap.default.svc.cluster.local'
@@ -108,7 +108,9 @@ cluster:
           key: 'data'
         searchAttribute: 'uid'
     parameters:
+      hot_standby_feedback: "on"
       max_connections: "42"
+      sync_replication_slots: "on"
     pg_hba:
       - host all 1.2.3.4/32 trust
     pg_ident:

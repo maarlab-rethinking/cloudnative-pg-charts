@@ -1,8 +1,7 @@
 {{- define "cluster.backup" -}}
-{{- if .Values.backups.enabled }}
+{{- if and .Values.backups.enabled ((eq .Values.backups.method "barmanObjectStore")) }}
 backup:
   target: "prefer-standby"
-  {{ if (eq (include "cluster.useBarmanCloudPlugin" .) "false")  }}
   retentionPolicy: {{ .Values.backups.retentionPolicy }}
   barmanObjectStore:
     wal:
@@ -19,7 +18,6 @@ backup:
       jobs: {{ .Values.backups.data.jobs }}
 
     {{- $d := dict "chartFullname" (include "cluster.fullname" .) "scope" .Values.backups "secretPrefix" "backup" }}
-    {{- include "cluster.barmanObjectStoreConfig" $d | nindent 2 }}
-  {{- end}}
+    {{- include "cluster.barmanObjectStoreConfig" $d | trimPrefix "\n" | nindent 2 }}
 {{- end }}
 {{- end }}

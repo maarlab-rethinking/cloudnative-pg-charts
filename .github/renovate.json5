@@ -15,9 +15,17 @@
         'appVersion: "(?<currentValue>.*?)"',
       ],
       datasourceTemplate: 'docker',
-      // Fork-specific: track maarlab-rethinking operator image
-      depNameTemplate: 'ghcr.io/maarlab-rethinking/cloudnative-pg',
+      depNameTemplate: 'ghcr.io/cloudnative-pg/cloudnative-pg',
       versioningTemplate: 'loose',
+    },
+    {
+      customType: 'regex',
+      managerFilePatterns: [
+        '/^Makefile$/',
+      ],
+      matchStrings: [
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+[A-Za-z0-9_]+?_VERSION\\s*\\??=\\s*["\']?(?<currentValue>.+?)["\']?\\s',
+      ],
     },
   ],
   packageRules: [
