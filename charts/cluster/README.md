@@ -246,6 +246,7 @@ Kubernetes: `>=1.29.0-0`
 | cluster.storage.size | string | `"8Gi"` |  |
 | cluster.storage.storageClass | string | `""` |  |
 | cluster.superuserSecret | string | `""` |  |
+| cluster.topologySpreadConstraints | list | `[]` | TopologySpreadConstraints specifies how to spread matching pods among the given topology. If labelSelector is not specified, it defaults to cnpg.io/cluster: <cluster-fullname>. More info: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/ |
 | cluster.walStorage.enabled | bool | `false` |  |
 | cluster.walStorage.size | string | `"1Gi"` |  |
 | cluster.walStorage.storageClass | string | `""` |  |

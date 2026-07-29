@@ -37,6 +37,10 @@ cluster:
             values:
             - node1
             - node2
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: DoNotSchedule
   env:
     - name: MY_CUSTOM_FLAG
       value: enabled
