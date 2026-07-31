@@ -246,7 +246,7 @@ Kubernetes: `>=1.29.0-0`
 | cluster.storage.size | string | `"8Gi"` |  |
 | cluster.storage.storageClass | string | `""` |  |
 | cluster.superuserSecret | string | `""` |  |
-| cluster.topologySpreadConstraints | list | `[]` | TopologySpreadConstraints specifies how to spread matching pods among the given topology. If labelSelector is not specified, it defaults to cnpg.io/cluster: <cluster-fullname>. More info: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/ |
+| cluster.topologySpreadConstraints | list | `[]` | TopologySpreadConstraints specifies how to spread matching pods among the given topology. If labelSelector is not specified, it defaults to selecting this cluster's instance pods only (cnpg.io/cluster: <cluster-fullname>, cnpg.io/podRole: instance). The podRole is required: pooler (pgbouncer) pods carry the same cnpg.io/cluster label, so a selector without it would count them towards the skew. More info: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/ |
 | cluster.walStorage.enabled | bool | `false` |  |
 | cluster.walStorage.size | string | `"1Gi"` |  |
 | cluster.walStorage.storageClass | string | `""` |  |

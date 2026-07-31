@@ -601,7 +601,7 @@
           "type": "string"
         },
         "topologySpreadConstraints": {
-          "description": "TopologySpreadConstraints specifies how to spread matching pods among the given topology.\nIf labelSelector is not specified, it defaults to cnpg.io/cluster: \u003ccluster-fullname\u003e.\nMore info: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
+          "description": "TopologySpreadConstraints specifies how to spread matching pods among the given topology.\nIf labelSelector is not specified, it defaults to selecting this cluster's instance\npods only (cnpg.io/cluster: \u003ccluster-fullname\u003e, cnpg.io/podRole: instance). The\npodRole is required: pooler (pgbouncer) pods carry the same cnpg.io/cluster label,\nso a selector without it would count them towards the skew.\nMore info: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
           "items": {
             "required": []
           },
