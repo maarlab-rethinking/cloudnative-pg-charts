@@ -85,6 +85,7 @@ spec:
     - labelSelector:
         matchLabels:
           cnpg.io/cluster: non-default-configuration-cluster
+          cnpg.io/podRole: instance
       maxSkew: 1
       topologyKey: topology.kubernetes.io/zone
       whenUnsatisfiable: DoNotSchedule

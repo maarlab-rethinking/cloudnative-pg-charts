@@ -267,7 +267,10 @@ cluster:
     topologyKey: topology.kubernetes.io/zone
 
   # -- TopologySpreadConstraints specifies how to spread matching pods among the given topology.
-  # If labelSelector is not specified, it defaults to cnpg.io/cluster: <cluster-fullname>.
+  # If labelSelector is not specified, it defaults to selecting this cluster's instance
+  # pods only (cnpg.io/cluster: <cluster-fullname>, cnpg.io/podRole: instance). The
+  # podRole is required: pooler (pgbouncer) pods carry the same cnpg.io/cluster label,
+  # so a selector without it would count them towards the skew.
   # More info: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/
   topologySpreadConstraints: []
     # - maxSkew: 1

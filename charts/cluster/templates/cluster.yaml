@@ -45,7 +45,7 @@ spec:
   {{- range . }}
     {{- $constraint := deepCopy . }}
     {{- if not $constraint.labelSelector }}
-      {{- $_ := set $constraint "labelSelector" (dict "matchLabels" (dict "cnpg.io/cluster" $clusterName)) }}
+      {{- $_ := set $constraint "labelSelector" (dict "matchLabels" (dict "cnpg.io/cluster" $clusterName "cnpg.io/podRole" "instance")) }}
     {{- end }}
     {{- $constraints = append $constraints $constraint }}
   {{- end }}
