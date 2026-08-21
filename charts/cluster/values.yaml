@@ -419,6 +419,20 @@ cluster:
     shared_preload_libraries: []
       # - pgaudit
 
+    # -- Extensions to mount from container images, via the `image volume extensions`
+    # feature (requires CloudNativePG >= 1.27, PostgreSQL >= 18 and Kubernetes >= 1.33).
+    # Each entry is passed through verbatim to `spec.postgresql.extensions`; see
+    # https://cloudnative-pg.io/documentation/current/imagevolume_extensions/
+    extensions: []
+      # - name: pgvector
+      #   image:
+      #     reference: ghcr.io/cloudnative-pg/pgvector:0.8.6-18-trixie
+      # - name: postgis
+      #   image:
+      #     reference: ghcr.io/cloudnative-pg/postgis-extension:3.6.4-18-trixie
+      #   ld_library_path:
+      #     - system
+
     # -- PostgreSQL LDAP configuration (see https://cloudnative-pg.io/documentation/current/postgresql_conf/#ldap-configuration)
     ldap: {}
       # https://cloudnative-pg.io/documentation/current/postgresql_conf/#ldap-configuration
