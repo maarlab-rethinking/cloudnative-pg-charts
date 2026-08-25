@@ -491,6 +491,13 @@
         },
         "postgresql": {
           "properties": {
+            "extensions": {
+              "description": "Extensions to mount from container images, via the `image volume extensions`\nfeature (requires CloudNativePG \u003e= 1.27, PostgreSQL \u003e= 18 and Kubernetes \u003e= 1.33).\nEach entry is passed through verbatim to `spec.postgresql.extensions`; see\nhttps://cloudnative-pg.io/documentation/current/imagevolume_extensions/",
+              "items": {
+                "required": []
+              },
+              "type": "array"
+            },
             "ldap": {
               "description": "PostgreSQL LDAP configuration (see https://cloudnative-pg.io/documentation/current/postgresql_conf/#ldap-configuration)",
               "required": [],
