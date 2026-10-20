@@ -19,6 +19,21 @@ release (e.g. 1.17.1)
 3. [Releasing the `plugin-barman-cloud` chart](#releasing-the-plugin-barman-cloud)
 4. [Pull request types](#pull-request-types)
 
+## Which charts this fork maintains
+
+Only `cluster` carries changes of its own: `cluster.topologySpreadConstraints`, plus
+the branding (repository URLs, runbook links, maintainers). It is released from here
+with a `-maarlab.N` suffix for as long as
+[cloudnative-pg/charts#818](https://github.com/cloudnative-pg/charts/pull/818) has not
+landed upstream.
+
+`cloudnative-pg` and `plugin-barman-cloud` are kept **identical to upstream** and must
+stay that way. The operator chart was forked for VPA support, which upstream shipped
+natively in 1.28.4 / 1.29.2 / 1.30.0; nothing of ours is left in either chart. Do not
+re-add a version suffix to them — it buys nothing, conflicts on every sync, and strands
+their `appVersion` behind upstream. Consume them straight from
+`cloudnative-pg.github.io/charts`.
+
 ## Pull request types
 
 This repository is a fork of [cloudnative-pg/charts](https://github.com/cloudnative-pg/charts),
