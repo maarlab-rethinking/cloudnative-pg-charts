@@ -17,6 +17,30 @@ release (e.g. 1.17.1)
 1. [Releasing the `cloudnative-pg` chart](#releasing-the-cloudnative-pg-chart)
 2. [Releasing the `cluster` chart](#releasing-the-cluster-chart)
 3. [Releasing the `plugin-barman-cloud` chart](#releasing-the-plugin-barman-cloud)
+4. [Pull request types](#pull-request-types)
+
+## Pull request types
+
+This repository is a fork of [cloudnative-pg/charts](https://github.com/cloudnative-pg/charts),
+so it sees two kinds of pull request, and they must be merged differently.
+
+**Release PRs** carry a version bump plus the regenerated `README.md` and
+`values.schema.json`, and nothing else. Merge them by **squashing**, keeping the
+commit message exactly `Release <chart>-vX.Y.Z` as the per-chart procedures below
+describe, since the release automation keys off that message.
+
+**Upstream sync PRs** carry a merge of `upstream/main`. Merge them with a **merge
+commit** — never squash them. Squashing discards the second parent, which drops the
+only record that this history already contains `upstream/main`. The merge base then
+falls back to the previous sync, and the next `git merge upstream/main` tries to
+reapply every commit that is already present, conflicting against content that
+already matches. Recovering from that means resetting `main`.
+
+A sync PR still has to come from a `release/*-v*` branch in this repository, for two
+reasons: `chart-yaml-guard` fails any other PR that touches `charts/*/Chart.yaml`, and
+`release-pr` only opens a PR automatically for that branch pattern. Name the branch
+after whichever chart is most significant in the sync, and state in the PR body which
+chart versions it releases and that it must not be squashed.
 
 ## Releasing the `cloudnative-pg` chart
 
@@ -95,7 +119,8 @@ In order to create a new release of the `cloudnative-pg` chart, follow these ste
 10. Wait for all the checks to pass
 11. Two approvals are required in order to merge the PR, if you are a maintainer approve the PR yourself and ask for
     another approval, otherwise ask for two approvals directly.
-12. Merge the PR squashing all commits and **taking care to keep the commit message to be 
+12. Merge the PR squashing all commits (an upstream sync PR must NOT be squashed — see
+    [Pull request types](#pull-request-types)) and **taking care to keep the commit message to be 
     `Release cloudnative-pg-vX.Y.Z`**
 13. A release `cloudnative-pg-vX.Y.Z` should be automatically created by an action, which will then trigger the release 
     action. Verify they both are successful.
@@ -146,7 +171,8 @@ In order to create a new release of the `cluster` chart, follow these steps:
 10. Two approvals are required in order to merge the PR, if you are a
     maintainer approve the PR yourself and ask for another approval, otherwise
     ask for two approvals directly.
-11. Merge the PR squashing all commits and **taking care to keep the commit
+11. Merge the PR squashing all commits (an upstream sync PR must NOT be squashed — see
+    [Pull request types](#pull-request-types)) and **taking care to keep the commit
     message to be `Release cluster-vX.Y.Z`**
 12. A release `cluster-vX.Y.Z` should be automatically created by an action, which will ten trigger the release action.
     Verify they both are successful.
@@ -234,7 +260,8 @@ In order to create a new release of the `plugin-barman-cloud` chart, follow thes
 10. Wait for all the checks to pass
 11. Two approvals are required in order to merge the PR, if you are a maintainer approve the PR yourself and ask for
     another approval, otherwise ask for two approvals directly.
-12. Merge the PR squashing all commits and **taking care to keep the commit message to be
+12. Merge the PR squashing all commits (an upstream sync PR must NOT be squashed — see
+    [Pull request types](#pull-request-types)) and **taking care to keep the commit message to be
     `Release plugin-barman-cloud-vX.Y.Z`**
 13. A release `plugin-barman-cloud-vX.Y.Z` should be automatically created by an action, which will then trigger the release
     action. Verify they both are successful.
